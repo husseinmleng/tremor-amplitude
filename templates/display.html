@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+    <title>Display Videos and Tremor Signal</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            color: #333333;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0066cc;
+        }
+
+        h2 {
+            text-align: center;
+            color: #009933;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .video-item {
+            flex: 1;
+            margin: 10px;
+        }
+
+        .image-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Display Videos and Tremor Signal</h1>
+    <div class="video-container">
+        <div class="video-item">
+            <h2>Input Video</h2>
+            <video width="640" height="480" controls>
+                <source src="{{ url_for('uploaded_file', filename=input_video) }}" type="video/mp4">
+            </video>
+        </div>
+        <div class="video-item">
+            <h2>Processed Video</h2>
+            <video width="640" height="480" controls>
+                <source src="{{ url_for('processed_file', filename=processed_video) }}" type="video/mp4">
+            </video>
+        </div>
+
+    </div>
+
+    <div class="image-container">
+        <h2>Tremor Signal</h2>
+        <img src="data:image/png;base64,{{ plot_img }}">
+    </div>
+
+</body>
+</html>

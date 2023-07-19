@@ -1,0 +1,9 @@
+mediapipe
+numpy
+matplotlib
+Flask
+flask-cors
+gunicorn
+opencv-python
+scipy
+matplotlib
