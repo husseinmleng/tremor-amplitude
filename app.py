@@ -222,10 +222,6 @@ def process_video(video_path):
         resized_frameWithLandmarks = cv2.resize(frameWithLandmarks, (640, 480))
         # Display the frame
         out.write(resized_frameWithLandmarks)
-        cv2.imshow('Frame', frameWithLandmarks)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-
     # Release the video file and destroy the window
     cap.release()
     out.release()
