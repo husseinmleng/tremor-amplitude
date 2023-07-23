@@ -146,7 +146,7 @@ def process_video(video_path):
     cap, camera_resolution, image_width, image_height = load_video(temp_file)
     fps = cap.get(cv2.CAP_PROP_FPS)
     # configure the output video to be JPEG4 visual codec
-    fourcc = cv2.VideoWriter_fourcc(*'MP4V')
+    fourcc = cv2.VideoWriter_fourcc(*'avc1')
     # output the proccessed video to a processed directory
     output_path = os.path.join(app.config['PROCESSED_FOLDER'], app.config['FILENAME'])
     out = cv2.VideoWriter(output_path, fourcc, 20.0, (640, 480))
