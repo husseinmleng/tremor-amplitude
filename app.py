@@ -16,6 +16,7 @@ CORS(app)
 
 app.config['UPLOADED_FOLDER'] = 'static/uploads/'
 app.config['PROCESSED_FOLDER'] = 'static/processed/'
+app.config['FILENAME'] = 'video.mp4'
 
 data_dict = {}
 
@@ -147,7 +148,7 @@ def process_video(video_path):
     # configure the output video to be JPEG4 visual codec
     fourcc = cv2.VideoWriter_fourcc(*'avc1')
     # output the proccessed video to a processed directory
-    output_path = os.path.join(app.config['PROCESSED_FOLDER'], os.path.basename(video_path) + '.mp4')
+    output_path = os.path.join(app.config['PROCESSED_FOLDER'], app.config['FILENAME'])
     out = cv2.VideoWriter(output_path, fourcc, 20.0, (640, 480))
     # Initialize a variable to store the frame count
     frame_count = 0
@@ -165,7 +166,7 @@ def process_video(video_path):
     # Initialize arrays for storing tremor signal data
     tremor_signal = []
     timestamps = []
-    input_video_path = os.path.join(app.config['UPLOADED_FOLDER'], os.path.basename(video_path))
+    input_video_path = os.path.join(app.config['UPLOADED_FOLDER'], app.config['FILENAME'])
     input_video_writer = cv2.VideoWriter(input_video_path, fourcc, fps, (640, 480))
     # Process each frame of the video
     frame_count = 0
