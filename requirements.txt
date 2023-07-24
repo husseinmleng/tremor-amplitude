@@ -1,9 +1,7 @@
 mediapipe
-numpy
-matplotlib
-Flask
-flask-cors
-gunicorn
 opencv-python
+flask
+flask_cors
+numpy
 scipy
 matplotlib
