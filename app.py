@@ -80,9 +80,12 @@ def load_video(video_path):
 
 def detect_hand_landmarks(frame, hands):
     # Detect hand landmarks using MediaPipe
+    # Modify the function to enhance the detection of the hand pose as the provided repo does
     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     results_hands = hands.process(frame)
-    return results_hands
+    # Enhance the detection of the hand pose
+    enhanced_results_hands = enhance_hand_pose_detection(results_hands)
+    return enhanced_results_hands
 
 def draw_hand_landmarks(frame, hand_landmarks, mp_hands, mp_drawing, mp_drawing_styles):
     # Draw hand landmarks on the frame
@@ -99,10 +102,13 @@ def draw_hand_landmarks(frame, hand_landmarks, mp_hands, mp_drawing, mp_drawing_
 
 def process_tremor_signal(tremor_signal, timestamps):
     # Process the tremor signal
+    # Modify the function to calculate the tremor amplitude exactly like the provided repo
     sampling_rate = 1000 / np.mean(np.diff(timestamps))
     time = np.array(timestamps) / 1000
     f, Pxx = signal.welch(tremor_signal, fs=sampling_rate, nperseg=1024)
-    return time, f, Pxx
+    # Calculate the tremor amplitude
+    tremor_amplitude = np.sqrt(Pxx)
+    return time, f, tremor_amplitude
 
 def plot_tremor_signal(time, tremor_signal_cm):
     # Plot the tremor signal and frequency spectrum
