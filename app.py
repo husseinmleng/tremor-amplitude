@@ -11,6 +11,10 @@ from io import BytesIO
 import base64
 import os
 
+def enhance_hand_pose_detection(results_hands):
+    # Placeholder function for enhancing hand pose detection
+    return results_hands
+
 app = Flask(__name__)
 CORS(app)
 
