@@ -203,9 +203,9 @@ def process_video(video_path):
         # Draw hand landmarks on the frame
         if results_hands.multi_hand_landmarks:
             try:
-                hand_landmarks = results_hands.multi_hand_landmarks[1]
-            except:
                 hand_landmarks = results_hands.multi_hand_landmarks[0]
+            except:
+                hand_landmarks = results_hands.multi_hand_landmarks[1]
             frameWithLandmarks = draw_hand_landmarks(frame, hand_landmarks, mp_hands, mp_drawing, mp_drawing_styles)
             norm_hand_landmarks = np.array([(lmk.x, lmk.y, lmk.z) for lmk in hand_landmarks.landmark])
             norm_hand_landmarks[:, 2] = 0
