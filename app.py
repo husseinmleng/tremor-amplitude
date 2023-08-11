@@ -5,7 +5,7 @@ from scipy import signal
 import mediapipe as mp
 import math
 from flask_cors import CORS
-from flask import Flask, request, render_template,redirect,url_for,send_from_directory
+from flask import Flask, request, render_template, redirect, url_for, send_from_directory
 import tempfile
 from io import BytesIO
 import base64
