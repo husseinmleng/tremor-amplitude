@@ -10,19 +10,16 @@ import tempfile
 from io import BytesIO
 import base64
 import os
-import environ
-
-# Load environment variables
-env = environ.Env()
-environ.Env.read_env()
 
 app = Flask(__name__)
 CORS(app)
 
 # Use environment variables for configurations
-app.config['UPLOADED_FOLDER'] = env('UPLOADED_FOLDER', default='static/uploads/')
-app.config['PROCESSED_FOLDER'] = env('PROCESSED_FOLDER', default='static/processed/')
-app.config['FILENAME'] = env('FILENAME', default='video.mp4')
+# Set environment variables
+app.config['UPLOADED_FOLDER'] = os.environ.get('UPLOADED_FOLDER', 'static/uploads/')
+app.config['PROCESSED_FOLDER'] = os.environ.get('PROCESSED_FOLDER', 'static/processed/')
+app.config['FILENAME'] = os.environ.get('FILENAME', 'video.mp4')
+
 data_dict = {}
 
 @app.route('/', methods=['GET', 'POST'])
